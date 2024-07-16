@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-custom-gradient {
+  background: linear-gradient(to right, #00aaff, #ff0099, #ffcc00);
+  background-size: 200% 200%;
+  animation: gradientAnimation 3s linear infinite;
+}
+
+.bg-custom-gradient-button {
+  background: linear-gradient(to right, #00aaff, #ff0099, #ffcc00);
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s linear infinite;
+}
