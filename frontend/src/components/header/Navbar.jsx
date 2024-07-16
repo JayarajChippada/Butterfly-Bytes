@@ -7,7 +7,7 @@ const Navbar = () => {
       <NavLink 
         to='/' 
         className={({ isActive }) => 
-          `py-2 pl-2 ${isActive ? 'bg-cyan-700' : 'hover:bg-slate-50'}`
+          `py-2 pl-2 ${isActive ? 'bg-blue-400' : 'hover:bg-slate-50'}`
         }
       > 
         Home
@@ -15,7 +15,7 @@ const Navbar = () => {
       <NavLink 
         to='/about' 
         className={({ isActive }) => 
-          `py-2 pl-2 ${isActive ? 'bg-cyan-700' : 'hover:bg-slate-50'}`
+          `py-2 pl-2 ${isActive ? 'bg-blue-400' : 'hover:bg-slate-50'}`
         }
       > 
         About
@@ -23,7 +23,7 @@ const Navbar = () => {
       <NavLink 
         to='/projects' 
         className={({ isActive }) => 
-          `py-2 pl-2 ${isActive ? 'bg-cyan-700' : 'hover:bg-slate-50'}`
+          `py-2 pl-2 ${isActive ? 'bg-blue-400' : 'hover:bg-slate-50'}`
         }
       > 
         Projects

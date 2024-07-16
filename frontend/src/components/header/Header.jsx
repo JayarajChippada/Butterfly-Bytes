@@ -90,21 +90,21 @@ const Header = () => {
               <NavLink 
                 to='/' 
                 className={({ isActive }) => 
-                  `text-sm ${isActive ? 'text-cyan-700' : 'hover:text-cyan-700'}`
+                  `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
                 }> 
                 Home
               </NavLink>
               <NavLink 
                 to='/about' 
                 className={({ isActive }) => 
-                  `text-sm ${isActive ? 'text-cyan-700' : 'hover:text-cyan-700'}`
+                  `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
                 }> 
                 About
               </NavLink>
               <NavLink 
                 to='/projects' 
                 className={({ isActive }) => 
-                  `text-sm ${isActive ? 'text-cyan-700' : 'hover:text-cyan-700'}`
+                  `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
                 }> 
                 Projects
               </NavLink>
