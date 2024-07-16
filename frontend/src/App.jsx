@@ -1,6 +1,6 @@
 import { Home, Dashboard, SignIn, SignUp, About, Projects } from './pages/index';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Header } from './components/header'
+import { Header } from './components'
 
 function App() {
   return (

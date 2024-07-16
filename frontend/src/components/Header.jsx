@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineSearch } from "react-icons/ai";
 import { NavLink, Link } from 'react-router-dom';
-import logo from '../../assets/butterfly-logo.avif';
+import logo from '../assets/butterfly-logo.avif';
 import { IoMdClose } from "react-icons/io";
 
 import Navbar from './Navbar';
@@ -48,72 +48,73 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Search Button */}
-        <div className='lg:hidden'>
-          <button 
-            type="button" 
-            className="flex items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none text-gray-900 bg-white border border-gray-200 hover:bg-slate-100 group rounded-full lg:hidden w-12 h-10">
-            <span className="flex items-center transition-all duration-200 rounded-md text-sm px-4 py-2">
-              <svg 
-                stroke="currentColor" 
-                fill="currentColor" 
-                strokeWidth="0" 
-                viewBox="0 0 1024 1024" 
-                height="1em" width="1em" 
-                xmlns="http://www.w3.org/2000/svg">
-                  <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z">
-                  </path>
-              </svg>
-            </span>
-          </button>
-        </div>
-
-        {/* Search Field */}
-        <form action="">
-          <div className="hidden lg:inline">
-            <div className="relative w-full">
-              <div className="absolute right-0 flex items-center pt-3 pr-3 text-gray-500 cursor-pointer">
-                <AiOutlineSearch height={5} width={5} />
-              </div>
-              <input 
-                type="text"
-                placeholder='Search...' 
-                className='block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500  p-2.5 text-sm pr-10 rounded-lg'
-              />
-            </div>
-          </div>
-        </form>
-        
-        {/* Nav Links */}
-        <div className="hidden md:flex">
-          <ul className='font-medium flex justify-between items-center space-x-8'>
-              <NavLink 
-                to='/' 
-                className={({ isActive }) => 
-                  `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
-                }> 
-                Home
-              </NavLink>
-              <NavLink 
-                to='/about' 
-                className={({ isActive }) => 
-                  `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
-                }> 
-                About
-              </NavLink>
-              <NavLink 
-                to='/projects' 
-                className={({ isActive }) => 
-                  `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
-                }> 
-                Projects
-              </NavLink>
-          </ul>
-        </div>
-
         <div className='flex items-center'>
+          {/* Search Button */}
+          <div className='lg:hidden'>
+            <button 
+              type="button" 
+              className="flex items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none text-gray-900 bg-white border border-gray-200 hover:bg-slate-100 group rounded-full lg:hidden w-12 h-10">
+              <span className="flex items-center transition-all duration-200 rounded-md text-sm px-4 py-2">
+                <svg 
+                  stroke="currentColor" 
+                  fill="currentColor" 
+                  strokeWidth="0" 
+                  viewBox="0 0 1024 1024" 
+                  height="1em" width="1em" 
+                  xmlns="http://www.w3.org/2000/svg">
+                    <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z">
+                    </path>
+                </svg>
+              </span>
+            </button>
+          </div>
+
+          <div className=""></div>
+    
+          {/* Search Field */}
+          <form action="">
+            <div className="hidden lg:inline">
+              <div className="relative w-full">
+                <div className="absolute right-0 flex items-center pt-3 pr-3 text-gray-500 cursor-pointer">
+                  <AiOutlineSearch height={5} width={5} />
+                </div>
+                <input 
+                  type="text"
+                  placeholder='Search...' 
+                  className='block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500  p-2.5 text-sm pr-10 rounded-lg'
+                />
+              </div>
+            </div>
+          </form>
+          
+          {/* Nav Links */}
+          <div className="hidden md:flex mx-10">
+            <ul className='font-medium flex justify-between items-center space-x-8'>
+                <NavLink 
+                  to='/' 
+                  className={({ isActive }) => 
+                    `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
+                  }> 
+                  Home
+                </NavLink>
+                <NavLink 
+                  to='/about' 
+                  className={({ isActive }) => 
+                    `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
+                  }> 
+                  About
+                </NavLink>
+                <NavLink 
+                  to='/projects' 
+                  className={({ isActive }) => 
+                    `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
+                  }> 
+                  Projects
+                </NavLink>
+            </ul>
+          </div>
           {/* Theme Button */}
-          <div className='hidden sm:block'>
+          <div className='hidden sm:block ml-5 md:ml-0'>
             <button 
               type="button" 
               className="flex items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none text-gray-900 bg-white border border-gray-200 hover:bg-slate-100 group rounded-full w-12 h-10">
