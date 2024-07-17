@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { AiOutlineSearch } from "react-icons/ai";
+import { FaMoon, FaSun } from 'react-icons/fa';
 import { NavLink, Link } from 'react-router-dom';
 import logo from '../assets/butterfly-logo.avif';
 import { IoMdClose } from "react-icons/io";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../redux/theme/themeSlice';
 
 import Navbar from './Navbar';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  const { currentUser } = useSelector((state) => state.user)
+  const { currentUser } = useSelector((state) => state.user);
+  const { theme }  = useSelector((state)=>state.theme);
+  const dispatch = useDispatch();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -19,6 +23,10 @@ const Header = () => {
 
   const toggleProfile = () => {
     setIsClicked(!isClicked);
+  }
+
+  const toggleThemeButton = () => {
+    dispatch(toggleTheme())
   }
 
   useEffect(() => {
@@ -39,7 +47,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className='bg-white flex flex-col w-full border-b-2'>
+    <header className='flex flex-col w-full border-b-2'>
       <nav className='flex flex-wrap items-center justify-between w-[92%] mx-auto py-2'>
         {/* Logo Div */}
         <div className='flex items-center justify-center'>
@@ -120,23 +128,15 @@ const Header = () => {
                 </NavLink>
             </ul>
           </div>
+
           {/* Theme Button */}
           <div className='hidden sm:block ml-5 md:ml-0'>
             <button 
               type="button" 
+              onClick={toggleThemeButton}
               className="flex items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none text-gray-900 bg-white border border-gray-200 hover:bg-slate-100 group rounded-full w-12 h-10">
               <span className="flex items-center transition-all duration-200 rounded-md text-sm px-4 py-2">
-                <svg 
-                  stroke="currentColor" 
-                  fill="currentColor" 
-                  strokeWidth="0" 
-                  viewBox="0 0 512 512" 
-                  height="1em" 
-                  width="1em" 
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path d="M283.211 512c78.962 0 151.079-35.925 198.857-94.792 7.068-8.708-.639-21.43-11.562-19.35-124.203 23.654-238.262-71.576-238.262-196.954 0-72.222 38.662-138.635 101.498-174.394 9.686-5.512 7.25-20.197-3.756-22.23A258.156 258.156 0 0 0 283.211 0c-141.309 0-256 114.511-256 256 0 141.309 114.511 256 256 256z">
-                  </path>
-                </svg>
+                { theme === 'light' ? <FaMoon /> : <FaSun />}
               </span>
             </button>
           </div>
