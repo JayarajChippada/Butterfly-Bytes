@@ -4,15 +4,22 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { NavLink, Link } from 'react-router-dom';
 import logo from '../assets/butterfly-logo.avif';
 import { IoMdClose } from "react-icons/io";
+import { useSelector } from 'react-redux';
 
 import Navbar from './Navbar';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const { currentUser } = useSelector((state) => state.user)
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const toggleProfile = () => {
+    setIsClicked(!isClicked);
+  }
 
   useEffect(() => {
     const handleResize = () => {
@@ -133,15 +140,47 @@ const Header = () => {
               </span>
             </button>
           </div>
-
-          {/* Sign In button */}
-          <Link to='/sign-in'>
-            <button className="relative ml-2 mr-2 bg-custom-gradient-button inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-lg group hover:text-white dark:text-white ">
-              <span className="relative m-0.5 font-normal px-4 py-2 transition-all ease-in duration-75 bg-white text-black hover:text-white rounded-md group-hover:bg-opacity-0">
-                Sign In
-              </span>
-            </button>
-          </Link>
+          
+          {/* Sign In button & User Profile */}
+          { currentUser 
+                ? (
+                  <div className='relative'>
+                    <button
+                    type='button'
+                    onClick={toggleProfile}
+                    className='ml-2 mr-2 flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-gray-300 dark:focus:ring-gray-600'
+                  >
+                    <span className='sr-only'>Open user menu</span>
+                    <img src={currentUser.profilePicture} alt="profile-picture" className='w-8 h-8 rounded-full object-cover'/>
+                  </button>
+                  {isClicked && (
+                    <div className='absolute  top-11 right-0 flex flex-col justify-center bg-white z-10 divide-y divide-gray-100 rounded-lg border shadow'>
+                      <div className="py-1">
+                        <div className="block px-4 py-2 text-gray-700 font-md  truncate">
+                          <div>{currentUser.userName}</div>
+                          <div>{currentUser.email}</div>
+                        </div>
+                      </div>
+                      <div className="py-1">
+                        <Link to={'/dashboard?tab=profile'} className='block px-4 py-2 text-gray-700 font-md hover:bg-gray-100'>Profile</Link>
+                      </div>
+                      <div className="py-1">
+                        <Link to={'/dashboard?tab=profile'} className='block px-4 py-2 text-gray-700 font-md hover:bg-gray-100'>SignOut</Link>
+                      </div>
+                    </div>
+                  )}
+                  </div>
+                ) 
+                : (
+                  <Link to='/sign-in'>
+                    <button className="relative ml-2 mr-2 bg-custom-gradient-button inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-lg group hover:text-white dark:text-white ">
+                      <span className="relative m-0.5 font-normal px-4 py-2 transition-all ease-in duration-75 bg-white text-black hover:text-white rounded-md group-hover:bg-opacity-0">
+                        Sign In
+                      </span>
+                    </button>
+                  </Link>
+                )
+          }
 
           {/* Toggle Menu */}
           <div className={`md:hidden p-2 rounded-md ${isOpen ? 'bg-slate-200 border border-slate-400' : 'hover:bg-slate-200'} focus:outline-none`}>
