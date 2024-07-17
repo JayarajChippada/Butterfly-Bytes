@@ -22,3 +22,21 @@
   background-size: 200% 200%;
   animation: gradientAnimation 5s linear infinite;
 }
+
+.custom-gradient-border {
+    position: relative;
+    border-width: 1px;
+    padding: 1rem; /* Adjust as needed */
+  }
+
+  .custom-gradient-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px; /* Match the border-top width */
+    background: linear-gradient(to right, #00aaff, #ff0099, #ffcc00);
+    background-size: 200% 200%;
+    animation: gradientAnimation 5s linear infinite;
+  }
