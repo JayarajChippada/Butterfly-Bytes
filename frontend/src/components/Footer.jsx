@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from '../assets/butterfly-logo.avif';
+import logo from '../assets/butterfly-logo.png';
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaInstagram, FaTwitter, FaGithub, FaDiscord } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className='bg-white custom-gradient-border'>
+    <footer className='bg-white custom-gradient-border shadow rounded-lg dark:bg-gray-800'>
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div className='sm:flex sm:justify-between sm:items-start'>
           {/* Logo Div */}
@@ -16,6 +16,9 @@ const Footer = () => {
               </span>
               <span className="flex">
                 |Blog
+                <Link to="/" className='hidden sm:block md:hidden'>
+                  <img src={logo} alt="Logo" className='w-8 h-8'/>
+                </Link>
               </span>
             </Link>
             <Link to="/" className='sm:hidden md:block'>
@@ -25,10 +28,10 @@ const Footer = () => {
           
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
+              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 About
               </h2>
-              <ul className='text-gray-500 font-medium'>
+              <ul className='text-gray-500 font-medium dark:text-white'>
                 <li className='mb-4'>
                   <a href="#" className='hover:underline'>Jayaraj's Blog</a>
                 </li>
@@ -38,10 +41,10 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
+              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Follow Us
               </h2>
-              <ul className='text-gray-500 font-medium'>
+              <ul className='text-gray-500 font-medium dark:text-white'>
                 <li className='mb-4'>
                   <a href="#" className='hover:underline'>Github</a>
                 </li>
@@ -51,10 +54,10 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
+              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
                 Legal
               </h2>
-              <ul className='text-gray-500 font-medium'>
+              <ul className='text-gray-500 font-medium dark:text-white'>
                 <li className='mb-4'>
                   <a href="#" className='hover:underline'>Privacy Policy</a>
                 </li>

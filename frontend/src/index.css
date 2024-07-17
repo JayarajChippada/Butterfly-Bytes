@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
+html, body {
+  @apply bg-white text-gray-700 dark:bg-custom-dark dark:text-gray-200;
+}
+
+
 @keyframes gradientAnimation {
   0% {
     background-position: 100% 50%;

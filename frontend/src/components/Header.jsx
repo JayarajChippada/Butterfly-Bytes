@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { AiOutlineMenu } from 'react-icons/ai';
-import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { NavLink, Link } from 'react-router-dom';
-import logo from '../assets/butterfly-logo.avif';
+import logo from '../assets/butterfly-logo.png';
 import { IoMdClose } from "react-icons/io";
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../redux/theme/themeSlice';
@@ -47,7 +46,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className='flex flex-col w-full border-b-2'>
+    <header className='bg-white flex flex-col w-full border-b-2 dark:border-gray-700 dark:bg-gray-800'>
       <nav className='flex flex-wrap items-center justify-between w-[92%] mx-auto py-2'>
         {/* Logo Div */}
         <div className='flex items-center justify-center'>
@@ -55,7 +54,7 @@ const Header = () => {
             <img src={logo} alt="Logo" className='w-10 h-10 sm:w-12 sm:h-12'/>
           </Link>
       
-          <Link to='/' className='flex flex-col font-bold text-xs sm:flex-row sm:items-center sm:text-lg'>
+          <Link to='/' className='flex flex-col font-bold text-xs sm:flex-row sm:items-center sm:text-lg dark:text-white'>
             <span className='px-2 py-1 rounded-md text-xs font-bold bg-clip-text text-white bg-custom-gradient sm:text-lg'>
               Jayaraj's 
             </span>
@@ -65,24 +64,18 @@ const Header = () => {
 
         <div className='flex items-center'>
           {/* Search Button */}
-          <div className='lg:hidden'>
-            <button 
-              type="button" 
-              className="flex items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none text-gray-900 bg-white border border-gray-200 hover:bg-slate-100 group rounded-full lg:hidden w-12 h-10">
-              <span className="flex items-center transition-all duration-200 rounded-md text-sm px-4 py-2">
-                <svg 
-                  stroke="currentColor" 
-                  fill="currentColor" 
-                  strokeWidth="0" 
-                  viewBox="0 0 1024 1024" 
-                  height="1em" width="1em" 
-                  xmlns="http://www.w3.org/2000/svg">
-                    <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z">
-                    </path>
-                </svg>
-              </span>
-            </button>
-          </div>
+          <button 
+            type="button" 
+            className="flex items-center justify-center p-0.5 text-center font-medium relative 
+                        focus:z-10 focus:outline-none text-gray-900 bg-white border border-gray-200 
+                        hover:bg-slate-100  enabled:hover:bg-gray-100 enabled:hover:text-cyan-700 
+                        :ring-cyan-700 focus:text-cyan-700 dark:bg-transparent dark:text-gray-400 
+                        dark:border-gray-600 dark:enabled:hover:text-white dark:enabled:hover:bg-gray-700 
+                        rounded-full focus:ring-2 lg:hidden w-12 h-10 ">
+            <span className="flex items-center transition-all duration-200 rounded-md text-sm px-4 py-2">
+             <AiOutlineSearch className='w-4 h-4'/>
+            </span>
+          </button>
 
           <div className=""></div>
     
@@ -96,7 +89,10 @@ const Header = () => {
                 <input 
                   type="text"
                   placeholder='Search...' 
-                  className='block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500  p-2.5 text-sm pr-10 rounded-lg'
+                  className='block w-full border disabled:cursor-not-allowed disabled:opacity-50 
+                  bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500  
+                  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 
+                  p-2.5 text-sm pr-10 rounded-lg'
                 />
               </div>
             </div>
@@ -104,25 +100,25 @@ const Header = () => {
           
           {/* Nav Links */}
           <div className="hidden md:flex mx-10">
-            <ul className='font-medium flex justify-between items-center space-x-8'>
+            <ul className='font-medium flex justify-between items-center space-x-8  bg-transparent '>
                 <NavLink 
                   to='/' 
                   className={({ isActive }) => 
-                    `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
+                    `text-sm ${isActive ? 'text-cyan-700 font-bold' : 'hover:text-cyan-700'}`
                   }> 
                   Home
                 </NavLink>
                 <NavLink 
                   to='/about' 
                   className={({ isActive }) => 
-                    `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
+                    `text-sm ${isActive ? 'text-cyan-700 font-bold' : 'hover:text-cyan-700'}`
                   }> 
                   About
                 </NavLink>
                 <NavLink 
                   to='/projects' 
                   className={({ isActive }) => 
-                    `text-sm ${isActive ? 'text-blue-400 font-bold' : 'hover:text-blue-400'}`
+                    `text-sm ${isActive ? 'text-cyan-700 font-bold' : 'hover:text-cyan-700'}`
                   }> 
                   Projects
                 </NavLink>
@@ -134,7 +130,12 @@ const Header = () => {
             <button 
               type="button" 
               onClick={toggleThemeButton}
-              className="flex items-center justify-center p-0.5 text-center font-medium relative focus:z-10 focus:outline-none text-gray-900 bg-white border border-gray-200 hover:bg-slate-100 group rounded-full w-12 h-10">
+              className="flex items-center justify-center p-0.5 text-center font-medium relative 
+                        focus:z-10 focus:outline-none text-gray-900 bg-white border border-gray-200 
+                        hover:bg-slate-100  enabled:hover:bg-gray-100 enabled:hover:text-cyan-700 
+                        :ring-cyan-700 focus:text-cyan-700 dark:bg-transparent dark:text-gray-400 
+                        dark:border-gray-600 dark:enabled:hover:text-white dark:enabled:hover:bg-gray-700 
+                        rounded-full focus:ring-2 w-12 h-10">
               <span className="flex items-center transition-all duration-200 rounded-md text-sm px-4 py-2">
                 { theme === 'light' ? <FaMoon /> : <FaSun />}
               </span>
@@ -154,18 +155,18 @@ const Header = () => {
                     <img src={currentUser.profilePicture} alt="profile-picture" className='w-8 h-8 rounded-full object-cover'/>
                   </button>
                   {isClicked && (
-                    <div className='absolute  top-11 right-0 flex flex-col justify-center bg-white z-10 divide-y divide-gray-100 rounded-lg border shadow'>
+                    <div className='absolute  top-11 right-0 flex flex-col justify-center text-sm bg-white z-10 divide-y divide-gray-100 dark:divide-gray-500  rounded-md border shadow dark:text-gray-200 dark:bg-gray-700 dark:border-none'>
                       <div className="py-1">
-                        <div className="block px-4 py-2 text-gray-700 font-md  truncate">
+                        <div className="block px-4 py-2 text-gray-700 font-md dark:text-white truncate">
                           <div>{currentUser.userName}</div>
                           <div>{currentUser.email}</div>
                         </div>
                       </div>
                       <div className="py-1">
-                        <Link to={'/dashboard?tab=profile'} className='block px-4 py-2 text-gray-700 font-md hover:bg-gray-100'>Profile</Link>
+                        <Link to={'/dashboard?tab=profile'} className='block px-4 py-2 text-gray-700 font-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-200'>Profile</Link>
                       </div>
                       <div className="py-1">
-                        <Link to={'/dashboard?tab=profile'} className='block px-4 py-2 text-gray-700 font-md hover:bg-gray-100'>SignOut</Link>
+                        <Link to={'/dashboard?tab=profile'} className='block px-4 py-2 text-gray-700 font-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-200'>SignOut</Link>
                       </div>
                     </div>
                   )}
@@ -173,8 +174,8 @@ const Header = () => {
                 ) 
                 : (
                   <Link to='/sign-in'>
-                    <button className="relative ml-2 mr-2 bg-custom-gradient-button inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-lg group hover:text-white dark:text-white ">
-                      <span className="relative m-0.5 font-normal px-4 py-2 transition-all ease-in duration-75 bg-white text-black hover:text-white rounded-md group-hover:bg-opacity-0">
+                    <button className="relative ml-2 mr-2 bg-custom-gradient-oauth inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-lg group hover:text-white dark:text-white ">
+                      <span className="relative m-0.5 font-normal px-4 py-2 transition-all ease-in duration-75 bg-white text-black hover:text-white rounded-md group-hover:bg-opacity-0 dark:bg-custom-dark dark:text-white">
                         Sign In
                       </span>
                     </button>
@@ -183,11 +184,13 @@ const Header = () => {
           }
 
           {/* Toggle Menu */}
-          <div className={`md:hidden p-2 rounded-md ${isOpen ? 'bg-slate-200 border border-slate-400' : 'hover:bg-slate-200'} focus:outline-none`}>
+          <div className={`md:hidden p-2 rounded-md text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2
+                         focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 
+                         ${isOpen ? 'border border-slate-400' : 'hover:bg-gray-100'} focus:outline-none`}>
             {isOpen ? (
               <IoMdClose fontSize={24} className='cursor-pointer' onClick={toggleMenu} />
             ) : (
-              <AiOutlineMenu fontSize={24} className='cursor-pointer' onClick={toggleMenu} />
+              <AiOutlineMenu  className='cursor-pointer h-6 w-6' onClick={toggleMenu} />
             )}
           </div>
         </div>

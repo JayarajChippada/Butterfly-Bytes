@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from '../assets/butterfly-logo.avif';
+import logo from '../assets/butterfly-logo.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { OAuthButton } from '../components';
 
@@ -62,9 +62,9 @@ const SignUp = () => {
               </Link>
             </div>
 
-            <p className="text-md text-gray-700 md:hidden">Transform your ideas into beautiful blogs. Sign up now and start your journey!</p>
+            <p className="text-md text-gray-700 md:hidden dark:text-white">Transform your ideas into beautiful blogs. Sign up now and start your journey!</p>
 
-            <div className='hidden md:flex flex-col text-gray-700'>
+            <div className='hidden md:flex flex-col text-gray-700 dark:text-white'>
               <p className="text-md">Transform your ideas into beautiful blogs.</p>
               <p className="text-md">Sign up now and start your journey!</p>
             </div>
@@ -75,32 +75,41 @@ const SignUp = () => {
         <div className="flex-1">
           <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
             <div>
-              <label className="text-sm font-semibold mb-2">Your username</label>
+              <label className="text-sm font-normal mb-2">Your username</label>
               <input 
                 type="text" 
                 placeholder='Username'
                 id='userName'
-                className='block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 p-2.5 text-sm rounded-lg'
+                className='block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 
+                    focus:border-cyan-500 focus:ring-cyan-500 
+                    dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 
+                      p-2.5 text-sm rounded-lg'
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label className="text-sm font-semibold mb-2">Your email</label>
+              <label className="text-sm font-normal mb-2">Your email</label>
               <input 
                 type="email" 
                 id='email'
                 placeholder='name@company.com'
-                className='block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 p-2.5 text-sm rounded-lg'
+                className='block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 
+                    focus:border-cyan-500 focus:ring-cyan-500 
+                    dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 
+                      p-2.5 text-sm rounded-lg'
                 onChange={handleChange}
               />
             </div>
             <div>
-              <label className="text-sm font-semibold mb-2">Your password</label>
+              <label className="text-sm font-normal mb-2">Your password</label>
               <input 
                 type="password" 
                 id='password'
                 placeholder='Password'
-                className='block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 focus:border-cyan-500 focus:ring-cyan-500 p-2.5 text-sm rounded-lg'
+                className='block w-full border disabled:cursor-not-allowed disabled:opacity-50 bg-gray-50 border-gray-300 text-gray-900 
+                    focus:border-cyan-500 focus:ring-cyan-500 
+                    dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-cyan-500 dark:focus:ring-cyan-500 
+                      p-2.5 text-sm rounded-lg'
                 onChange={handleChange}
               />
             </div>
