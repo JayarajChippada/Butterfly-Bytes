@@ -23,6 +23,12 @@
   animation: gradientAnimation 5s linear infinite;
 }
 
+.bg-custom-gradient-oauth {
+  background: linear-gradient(to right, #00aaff, #ff0099);
+  background-size: 200% 200%;
+  animation: gradientAnimation 5s linear infinite;
+}
+
 .custom-gradient-border {
     position: relative;
     border-width: 1px;

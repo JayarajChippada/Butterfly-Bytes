@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../assets/butterfly-logo.avif';
 import { Link, useNavigate } from 'react-router-dom';
+import { OAuthButton } from '../components';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({}); 
@@ -74,7 +75,7 @@ const SignUp = () => {
         <div className="flex-1">
           <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
             <div>
-              <h3 className="font-semibold mb-2">Your username</h3>
+              <label className="text-sm font-semibold mb-2">Your username</label>
               <input 
                 type="text" 
                 placeholder='Username'
@@ -84,7 +85,7 @@ const SignUp = () => {
               />
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Your email</h3>
+              <label className="text-sm font-semibold mb-2">Your email</label>
               <input 
                 type="email" 
                 id='email'
@@ -94,7 +95,7 @@ const SignUp = () => {
               />
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Your password</h3>
+              <label className="text-sm font-semibold mb-2">Your password</label>
               <input 
                 type="password" 
                 id='password'
@@ -122,6 +123,7 @@ const SignUp = () => {
                 }
               </span>
             </button>
+            <OAuthButton />
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Have an account?</span>

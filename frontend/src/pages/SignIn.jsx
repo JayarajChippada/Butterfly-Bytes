@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import logo from '../assets/butterfly-logo.avif';
 import { Link, useNavigate } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
+
+import { OAuthButton } from '../components';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({}); 
@@ -75,7 +78,7 @@ const SignIn = () => {
         <div className="flex-1">
           <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
             <div>
-              <h3 className="font-semibold mb-2">Your email</h3>
+              <label className="text-sm font-semibold mb-2">Your email</label>
               <input 
                 type="email" 
                 id='email'
@@ -85,7 +88,7 @@ const SignIn = () => {
               />
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Your password</h3>
+              <label className="text-sm font-semibold mb-2 ">Your password</label>
               <input 
                 type="password" 
                 id='password'
@@ -113,6 +116,7 @@ const SignIn = () => {
                 }
               </span>
             </button>
+            <OAuthButton />
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Don't have an account?</span>
