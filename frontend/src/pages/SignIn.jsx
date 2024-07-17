@@ -23,11 +23,11 @@ const SignIn = () => {
               </Link>
             </div>
 
-            <p className="text-md text-gray-700 md:hidden">Transform your ideas into beautiful blogs. Sign up now and start your journey!</p>
+            <p className="text-md text-gray-700 md:hidden">Your stories await. Sign in and keep your creative wings in motion.</p>
 
             <div className='hidden md:flex flex-col text-gray-700'>
-              <p className="text-md">Transform your ideas into beautiful blogs.</p>
-              <p className="text-md">Sign up now and start your journey!</p>
+              <p className="text-md">Your stories await.</p>
+              <p className="text-md">Sign in and keep your creative wings in motion.</p>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@ const SignIn = () => {
           <div className="flex gap-2 text-sm mt-5">
             <span>Have an account?</span>
             <Link to='/sign-up' className='text-blue-500'>
-              Sign In
+              Sign Up
             </Link>
           </div>
         </div>
