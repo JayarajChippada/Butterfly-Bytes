@@ -163,10 +163,10 @@ const Header = () => {
                         </div>
                       </div>
                       <div className="py-1">
-                        <Link to={'/dashboard?tab=profile'} className='block px-4 py-2 text-gray-700 font-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-200'>Profile</Link>
+                        <Link to={'/dashboard?tab=profile'} onClick={toggleProfile} className='block px-4 py-2 text-gray-700 font-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-200'>Profile</Link>
                       </div>
                       <div className="py-1">
-                        <Link to={'/dashboard?tab=profile'} className='block px-4 py-2 text-gray-700 font-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-200'>SignOut</Link>
+                        <Link to={'/dashboard?tab=profile'} onClick={toggleProfile} className='block px-4 py-2 text-gray-700 font-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-200'>SignOut</Link>
                       </div>
                     </div>
                   )}
