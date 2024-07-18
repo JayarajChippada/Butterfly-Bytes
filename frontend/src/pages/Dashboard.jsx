@@ -16,12 +16,12 @@ const Dashboard = () => {
   return (
     <div className='min-h-screen flex flex-col md:flex-row '>
       {/* Sidebar */}
-      <div className="w-full md:w-56">
+      <div className="md:w-56">
         <DashSidebar tab={tab}/>
       </div>
 
       {/* Container */}
-      <div className="">
+      <div className="h-fullmax-w-lg mx-auto p-3 w-full">
         {tab === 'profile' && <DashProfile /> }
       </div>
     </div>
