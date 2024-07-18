@@ -16,9 +16,9 @@ const Footer = () => {
               </span>
               <span className="flex">
                 |Blog
-                <Link to="/" className='hidden sm:block md:hidden'>
+                <div className='hidden sm:block md:hidden'>
                   <img src={logo} alt="Logo" className='w-8 h-8'/>
-                </Link>
+                </div>
               </span>
             </Link>
             <Link to="/" className='sm:hidden md:block'>

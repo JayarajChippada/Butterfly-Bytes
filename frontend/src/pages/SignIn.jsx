@@ -132,7 +132,7 @@ const SignIn = () => {
           </div>
           {
             errorMessage && (
-              <div className="mt-4 text-sm p-4 text-red-800 rounded-lg bg-red-50">
+              <div className="mt-4 text-sm p-4 text-red-800 rounded-lg bg-red-50 ">
                 <span className="font-semibold">{errorMessage}</span>
               </div>
             )
