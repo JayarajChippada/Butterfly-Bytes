@@ -3,16 +3,16 @@ import { errorHandler } from "../utils/errorHandler.js";
 import bcryptjs from 'bcryptjs';
 
 export const updateUser = async (req, res, next) => {
-    // if(req.user.id !== req.params.userId) {
-    //     return next(errorHandler(403, "You are not allowed to update the user"));
-    // }
+    if(req.user.id !== req.params.userId) {
+        return next(errorHandler(403, "You are not allowed to update the user"));
+    }
     if(req.body.password) {
         if(req.body.password.length < 6) {
             return next(errorHandler(400, 'Password must be atleast 6 characters'));
         }
 
         const salt = await bcryptjs.genSalt(10);
-        const hashedPassword = await bcryptjs.hash(password, salt);
+        const hashedPassword = await bcryptjs.hash(req.body.password, salt);
         req.body.password = hashedPassword;
     }
     if(req.body.userName) {
@@ -28,19 +28,19 @@ export const updateUser = async (req, res, next) => {
         if(!req.body.userName.match(/^[a-zA-Z-0-9]+$/)) {
             return next(errorHandler(400, 'Username can only contain letters and numbers'))
         }
-        try {
-            const updatedUser = await User.findByIdAndUpdate(req.params.userId, {
-                $set: {
-                    userName: req.body.userName,
-                    email: req.body.email,
-                    profilePicture: req.body.profilePicture,
-                    password: req.body.password
-                }
-            }, { new: true });
-            const { password: pass, ...userData} = updatedUser._doc;
-            res.status(200).json(userData)
-        } catch(err) {
-            next(err);
-        }
+    }
+    try {
+        const updatedUser = await User.findByIdAndUpdate(req.params.userId, {
+            $set: {
+                userName: req.body.userName,
+                email: req.body.email,
+                profilePicture: req.body.profilePicture,
+                password: req.body.password
+            }
+        }, { new: true });
+        const { password: pass, ...userData} = updatedUser._doc;
+        res.status(200).json(userData)
+    } catch(err) {
+        next(err);
     }
 }
