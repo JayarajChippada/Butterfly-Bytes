@@ -58,7 +58,7 @@ export const signin = async (req, res, next) => {
 
         // Creating a token
         const token = jwt.sign(
-            { userId: user._id, userName: user.userName },
+            { userId: user._id, isAdmin: user.isAdmin },
             process.env.JWT_TOKEN,
             { expiresIn: '1h' }
         );
@@ -77,7 +77,7 @@ export const googleAuth = async(req, res, next) => {
     try {
         const user = await User.findOne({ email: email });
         if(user) {
-            const token = jwt.sign({id: user._id}, process.env.JWT_TOKEN);
+            const token = jwt.sign({id: user._id, isAdmin: user.isAdmin}, process.env.JWT_TOKEN);
             const { password: pass, ...userData } = user._doc;
             res.status(200)
                 .cookie('access_token', token, { httpOnly:true })
@@ -97,7 +97,7 @@ export const googleAuth = async(req, res, next) => {
             });
             await newUser.save();
             
-            const token = jwt.sign({id: newUser._id}, process.env.JWT_TOKEN);
+            const token = jwt.sign({id: newUser._id, isAdmin: user.isAdmin}, process.env.JWT_TOKEN);
             const { password:pass, ...userData } = newUser._doc;
             res.status(200)
                 .cookie('access_token', token, { httpOnly:true })

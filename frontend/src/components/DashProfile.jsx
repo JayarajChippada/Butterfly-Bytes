@@ -190,7 +190,6 @@ const DashProfile = () => {
             )}
             <img 
                 src={imageFileUrl || currentUser.profilePicture} 
-                alt="user" 
                 className={`rounded-full w-full h-full object-cover border-8 border-[light-gray] ${imageFileUploadingProgress && imageFileUploadingProgress < 100 && 'opacity-60'}`}
             />
         </div>

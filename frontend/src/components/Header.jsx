@@ -167,10 +167,10 @@ const Header = () => {
                     <button
                     type='button'
                     onClick={toggleProfile}
-                    className='ml-2 mr-2 flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-gray-300 dark:focus:ring-gray-600'
+                    className={`ml-2 mr-2 flex text-sm bg-transparent rounded-full md:me-0 focus:ring-gray-300 dark:focus:ring-gray-600`}
                   >
                     <span className='sr-only'>Open user menu</span>
-                    <img src={currentUser.profilePicture} alt="profile-picture" className='w-8 h-8 rounded-full object-cover'/>
+                    <img src={currentUser.profilePicture} className='w-8 h-8 rounded-full object-cover'/>
                   </button>
                   {isClicked && (
                     <div className='absolute  top-11 right-0 flex flex-col justify-center text-sm bg-white z-10 divide-y divide-gray-100 dark:divide-gray-500  rounded-md border shadow dark:text-gray-200 dark:bg-gray-700 dark:border-none'>
