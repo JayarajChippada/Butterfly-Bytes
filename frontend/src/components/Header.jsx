@@ -6,6 +6,7 @@ import logo from '../assets/butterfly-logo.png';
 import { IoMdClose } from "react-icons/io";
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../redux/theme/themeSlice';
+import { signOutSuccess } from '../redux/user/userSlice';
 
 import Navbar from './Navbar';
 
@@ -44,6 +45,23 @@ const Header = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const handleSignOut = async(e) => {
+      try{
+        const res = await fetch('/api/user/sign-out', {
+          method: 'POST',
+        });
+        const data = await res.json();
+        if(!res.ok) {
+          console.log(data.message);
+        }
+        else {
+          dispatch(signOutSuccess());
+        }
+      } catch(error) {
+        console.log(error.message);
+      }
+    }
 
   return (
     <header className='bg-white flex flex-col w-full border-b-2 dark:border-gray-700 dark:bg-gray-800'>
@@ -166,7 +184,7 @@ const Header = () => {
                         <Link to={'/dashboard?tab=profile'} onClick={toggleProfile} className='block px-4 py-2 text-gray-700 font-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-200'>Profile</Link>
                       </div>
                       <div className="py-1">
-                        <Link to={'/dashboard?tab=profile'} onClick={toggleProfile} className='block px-4 py-2 text-gray-700 font-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-200'>SignOut</Link>
+                        <span onClick={handleSignOut} className='block cursor-pointer px-4 py-2 text-gray-700 font-md dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-gray-200'>SignOut</span>
                       </div>
                     </div>
                   )}

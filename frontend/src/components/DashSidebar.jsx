@@ -2,8 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdPerson } from "react-icons/io";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
+import { useDispatch } from 'react-redux';
+import { signOutSuccess } from '../redux/user/userSlice';
 
 const DashSidebar = ({ tab }) => {
+  const dispatch = useDispatch();
+  const handleSignOut = async(e) => {
+      try{
+        const res = await fetch('/api/user/sign-out', {
+          method: 'POST',
+        });
+        const data = await res.json();
+        if(!res.ok) {
+          console.log(data.message);
+        }
+        else {
+          dispatch(signOutSuccess());
+        }
+      } catch(error) {
+        console.log(error.message);
+      }
+    }
   return (
     <div className='h-full w-full md:w-56'>
       <div className='h-full overflow-y-auto overflow-x-hidden rounded bg-gray-50 py-4 px-3 dark:bg-gray-800'>
@@ -29,7 +48,7 @@ const DashSidebar = ({ tab }) => {
                           hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700 ${ tab === 'sign-out' ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent'}`} >
                   <FaArrowRightFromBracket  className='h-5 w-6  flex-shrink-0 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-white text-gray-700 dark:text-gray-100'/>
                   <span  className='px-3 flex-1 whitespace-nowrap'> 
-                      <Link to='/dashboard?tab=sign-out' >Sign out</Link>
+                      <span onClick={handleSignOut} className='cursor-pointer' >Sign out</span>
                   </span>
                               
               </div>
