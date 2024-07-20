@@ -2,11 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdPerson } from "react-icons/io";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
-import { useDispatch } from 'react-redux';
+import { HiDocumentText } from 'react-icons/hi';
+import { useDispatch, useSelector } from 'react-redux';
 import { signOutSuccess } from '../redux/user/userSlice';
 
 const DashSidebar = ({ tab }) => {
   const dispatch = useDispatch();
+  const { currentUser } = useSelector((state)=>state.user);
   const handleSignOut = async(e) => {
       try{
         const res = await fetch('/api/user/sign-out', {
@@ -37,11 +39,26 @@ const DashSidebar = ({ tab }) => {
                   <span className='flex  h-fit  items-center gap-1 font-semibold bg-gray-600 text-gray-100 
                           dark:bg-gray-900 dark:text-gray-200 group-hover:bg-gray-500 dark:group-hover:bg-gray-700 
                           p-1 text-xs rounded px-2 py-0.5'>
-                              User
+                              { currentUser.isAdmin ? 'Admin' : 'User'}
                   </span>
                               
               </div>
           </li>
+
+          {
+            currentUser.isAdmin && (
+               <li>
+                  <div className={`flex items-center  justify-center rounded-lg p-2 text-base font-normal text-gray-900 
+                              hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700 ${ tab === 'posts' ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent'}`} >
+                      <HiDocumentText  className='h-5 w-6  flex-shrink-0 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-white text-gray-700 dark:text-gray-100'/>
+                      <span  className='px-3 flex-1 whitespace-nowrap'> 
+                          <Link to='/dashboard?tab=posts' >Posts</Link>
+                      </span>
+
+                  </div>
+              </li>
+            )
+          }
 
           <li>
               <div className={`flex items-center  justify-center rounded-lg p-2 text-base font-normal text-gray-900 
@@ -53,6 +70,7 @@ const DashSidebar = ({ tab }) => {
                               
               </div>
           </li>
+
         </ul>
       </div>
     </div>
