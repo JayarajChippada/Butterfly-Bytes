@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getDownloadURL, getStorage, uploadBytesResumable } from 'firebase/storage';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -32,7 +33,7 @@ const DashProfile = () => {
     const [updateUserError, setUpdateUserError] = useState(null);
 
     const dispatch = useDispatch();
-    const { currentUser, error } = useSelector((state) => state.user);
+    const { currentUser, error, loading } = useSelector((state) => state.user);
     const filePickerRef = useRef();
 
 
@@ -245,13 +246,29 @@ const DashProfile = () => {
 
         <button 
           type='submit'
+          disabled={loading || imageFileUploading}
           className="relative bg-custom-gradient-oauth flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-lg group hover:text-white dark:text-white ">
           <span className="relative  w-full font-normal px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-custom-dark dark:text-white text-black hover:text-white rounded-md group-hover:bg-opacity-0">
             <div className="flex items-center justify-center">
-              Update
+              {loading ? 'Loading...' : 'Update'}
             </div>
           </span>
         </button>
+        {
+          currentUser.isAdmin && (
+            <Link to={'/create-post'}>
+              <button 
+                type='submit'
+                className="relative w-full bg-custom-gradient-button flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-lg group hover:text-white dark:text-white">
+                <span className="relative  w-full font-normal px-4 py-2 transition-all ease-in duration-75 bg-transparent text-white rounded-md hover:shadow-lg group-hover:bg-opacity-0">
+                  <div className="flex items-center justify-center">
+                    Create a Post
+                  </div>
+                </span>
+              </button>
+            </Link>
+          )
+        }
       </form>
       <div className= "text-red-500 flex justify-between mt-5">
         <span onClick={()=>setShowModel(true)} className="cursor-pointer">Delete Account</span>

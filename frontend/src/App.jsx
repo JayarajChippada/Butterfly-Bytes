@@ -1,6 +1,6 @@
-import { Home, Dashboard, SignIn, SignUp, About, Projects } from './pages/index';
+import { Home, Dashboard, SignIn, SignUp, About, Projects, CreatePost } from './pages/index';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Footer, Header, PrivateRoute } from './components'
+import { Footer, Header, PrivateRoute, OnlyAdminPrivateRoute } from './components'
 
 function App() {
   return (
@@ -12,6 +12,9 @@ function App() {
         <Route path='/sign-up' element={<SignUp />} />
         <Route element={<PrivateRoute />}> 
             <Route path='/dashboard' element={<Dashboard />} />
+        </Route>
+        <Route element={<OnlyAdminPrivateRoute />}> 
+            <Route path='/create-post' element={<CreatePost />} />
         </Route>
         <Route path='/about' element={<About />} />
         <Route path='/projects' element={<Projects />} />

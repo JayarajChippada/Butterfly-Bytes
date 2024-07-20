@@ -7,6 +7,14 @@ html, body {
   @apply bg-white text-gray-700 dark:bg-custom-dark dark:text-gray-200 min-h-screen;
 }
 
+body {
+  height: 100vh;
+}
+
+.ql-editor {
+  font-size: 1.05rem;
+}
+
 
 @keyframes gradientAnimation {
   0% {
