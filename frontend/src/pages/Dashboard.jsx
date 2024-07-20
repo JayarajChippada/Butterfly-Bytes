@@ -22,10 +22,11 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-grow flex justify-center items-center p-3">
+      <div className="flex-grow overflow-x-auto flex justify-center items-start p-3">
         {tab === 'profile' && <DashProfile />}
         {tab === 'posts' && <DashPosts />}
       </div>
+      
     </div>
   );
 }
