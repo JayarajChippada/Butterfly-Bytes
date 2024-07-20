@@ -1,5 +1,5 @@
-import { errorHandler } from "../utils/errorHandler";
-import { Post } from '../models/post.model.js';
+import { errorHandler } from "../utils/errorHandler.js";
+import  Post  from '../models/post.model.js';
 
 export const createPost = async(req, res, next) => {
     if(!req.user.isAdmin) {
