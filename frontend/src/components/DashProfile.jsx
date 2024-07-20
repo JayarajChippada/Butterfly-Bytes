@@ -47,39 +47,46 @@ const DashProfile = () => {
     const handleImageChange = (e) => {
       const file = e.target.files[0];
       if(file) {
-        setImageFile(e.target.files[0]);
+        setImageFile(file);
         //setImageFileUrl(URL.createObjectURL(file));
       }
     }
 
     const uploadImage = async() => {
-      setImageFileUploading(true);
-      setImageFileUploadError(null);
-      const storage = getStorage(app);
-      const fileName = new Date().getTime() + imageFile.name;
-      const storageRef = ref(storage, fileName);
-      const uploadTask = uploadBytesResumable(storageRef, imageFile);
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          setImageFileUploadingProgress(progress.toFixed(0));
-        },
-        (error) => {
-          setImageFileUploadError('Could not upload image (File must be less than 2MB)');
-          setImageFileUploadingProgress(null);
-          setImageFile(null);
-          setImageFileUrl(null);
-          setImageFileUploading(false);
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            setImageFileUrl(downloadURL);
-            setFormData({ ...formData, profilePicture: downloadURL });
+      try {
+        setImageFileUploading(true);
+        setImageFileUploadError(null);
+        const storage = getStorage(app);
+        const fileName = new Date().getTime() + imageFile.name;
+        const storageRef = ref(storage, fileName);
+        const uploadTask = uploadBytesResumable(storageRef, imageFile);
+        uploadTask.on(
+          'state_changed',
+          (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            setImageFileUploadingProgress(progress.toFixed(0));
+          },
+          (error) => {
+            setImageFileUploadError('Could not upload image (File must be less than 2MB)');
+            setImageFileUploadingProgress(null);
+            setImageFile(null);
+            setImageFileUrl(null);
             setImageFileUploading(false);
-          })
-        }
-      )
+          },
+          () => {
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setImageFileUrl(downloadURL);
+              setFormData({ ...formData, profilePicture: downloadURL });
+              setImageFileUploading(false);
+              setImageFileUploadError(false);
+              // setImageFileUploadingProgress(null);
+            })
+          }
+        )
+      } catch(error) {
+        setImageFileUploadError(error.message);
+        setImageFileUploadingProgress(null);
+      }
     }
 
     const handleChange = (e) => {
