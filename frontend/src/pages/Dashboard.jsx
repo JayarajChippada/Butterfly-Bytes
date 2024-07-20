@@ -1,36 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { DashPosts, DashProfile, DashSidebar } from '../components';
+import { DashProfile, DashSidebar, DashPosts } from '../components';
 
 const Dashboard = () => {
   const location = useLocation();
   const [tab, setTab] = useState('');
 
-  useEffect(()=>{
+  useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
     const tabFromUrl = urlParams.get('tab');
-    if(tabFromUrl) {
+    if (tabFromUrl) {
       setTab(tabFromUrl);
     }
-  },[location.search])
+  }, [location.search]);
+
   return (
-    <div className='flex min-h-screen flex-col md:flex-row '>
+    <div className='min-h-screen flex flex-col md:flex-row'>
       {/* Sidebar */}
       <div className="md:w-56">
-        <DashSidebar tab={tab}/>
+        <DashSidebar tab={tab} />
       </div>
 
-      {/* Profile */}
-      <div className="max-w-lg mx-auto p-3 w-full">
-        {tab === 'profile' && <DashProfile /> }
-      </div>
-
-      {/* Posts */}
-      <div className="h-full max-w-lg mx-auto p-3 w-full">
-        {tab === 'posts' && <DashPosts /> }
+      {/* Main Content */}
+      <div className="flex-grow flex justify-center items-center p-3">
+        {tab === 'profile' && <DashProfile />}
+        {tab === 'posts' && <DashPosts />}
       </div>
     </div>
-  )
+  );
 }
 
-export default Dashboard
+export default Dashboard;
