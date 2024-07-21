@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const PostsTable = ({ userPosts, setUserPosts }) => {
+const PostsTable = ({ userPosts,  setShowModel, setPostIdToDelete }) => {
+ 
   return (
     <div className='relative shadow-md rounded-lg overflow-hidden'>
       <div className='overflow-x-auto'>
@@ -48,7 +49,12 @@ const PostsTable = ({ userPosts, setUserPosts }) => {
                   {post.category}
                 </td>
                 <td className='px-6 py-4'>
-                  <span className='font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer'>
+                  <span 
+                    onClick={(e)=>{
+                      setShowModel(true);
+                      setPostIdToDelete(post._id);
+                    }}
+                    className='font-medium text-red-600 dark:text-red-500 hover:underline cursor-pointer'>
                     Delete
                   </span>
                 </td>
