@@ -7,3 +7,4 @@ export { default as DashProfile } from './DashProfile';
 export { default as DashSidebar } from './DashSidebar';
 export { default as OnlyAdminPrivateRoute } from './OnlyAdminPrivateRoute';
 export { default as DashPosts } from './DashPosts';
+export { default as DashUsers } from './DashUsers';

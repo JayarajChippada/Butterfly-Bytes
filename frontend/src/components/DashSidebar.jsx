@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoMdPerson } from "react-icons/io";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
-import { HiDocumentText } from 'react-icons/hi';
+import { HiDocumentText, HiOutlineUserGroup } from 'react-icons/hi';
 import { useDispatch, useSelector } from 'react-redux';
 import { signOutSuccess } from '../redux/user/userSlice';
 
@@ -53,6 +53,21 @@ const DashSidebar = ({ tab }) => {
                       <HiDocumentText  className='h-5 w-6  flex-shrink-0 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-white text-gray-700 dark:text-gray-100'/>
                       <span  className='px-3 flex-1 whitespace-nowrap'> 
                           <Link to='/dashboard?tab=posts' >Posts</Link>
+                      </span>
+
+                  </div>
+              </li>
+            )
+          }
+
+          {
+            currentUser.isAdmin && (
+               <li>
+                  <div className={`flex items-center  justify-center rounded-lg p-2 text-base font-normal text-gray-900 
+                              hover:bg-gray-100  dark:text-white dark:hover:bg-gray-700 ${ tab === 'users' ? 'bg-gray-200 dark:bg-gray-700' : 'bg-transparent'}`} >
+                      <HiOutlineUserGroup  className='h-5 w-6  flex-shrink-0 transition duration-75 group-hover:text-gray-900 dark:group-hover:text-white text-gray-700 dark:text-gray-100'/>
+                      <span  className='px-3 flex-1 whitespace-nowrap'> 
+                          <Link to='/dashboard?tab=users' >Users</Link>
                       </span>
 
                   </div>

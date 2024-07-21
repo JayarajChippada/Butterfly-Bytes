@@ -74,12 +74,12 @@ export const getUsers = async(req, res, next) => {
         const startIndex = parseInt(req.query.startIndex) || 0;
         const limit = parseInt(req.query.limit) || 9;
         const sortDirection = req.query.order === 'asc' ? 1 : -1; // newest and oldest
-        const users = await User.find()
+        const usersWithPasswords = await User.find()
                         .sort({ updatedAt: sortDirection })
                         .skip(startIndex)
                         .limit(limit);
         
-        const usersWithoutPasswords = users.map((user) => {
+        const users = usersWithPasswords.map((user) => {
             const { password: pass, ...userData } = user._doc;
             return userData;
         })
@@ -93,7 +93,7 @@ export const getUsers = async(req, res, next) => {
         const lastMonthUsers = await User.countDocuments({ createdAt: { $gte: oneMonthAgo }}) //gte-greater than equal to 
 
         res.status(200).json({
-            usersWithoutPasswords,
+            users,
             totalUsers,
             lastMonthUsers
         })

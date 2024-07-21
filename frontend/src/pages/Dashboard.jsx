@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { DashProfile, DashSidebar, DashPosts } from '../components';
+import { DashProfile, DashSidebar, DashPosts, DashUsers } from '../components';
 
 const Dashboard = () => {
   const location = useLocation();
@@ -24,6 +24,7 @@ const Dashboard = () => {
       {/* Main Content */}
       <div className="flex-grow overflow-x-auto flex justify-center items-start p-3 ">
         {tab === 'profile' && <DashProfile />}
+        {tab === 'users' && <DashUsers />}
         {tab === 'posts' && <DashPosts />}
       </div>
       

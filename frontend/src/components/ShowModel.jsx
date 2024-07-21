@@ -2,7 +2,7 @@ import React from 'react';
 import { MdClose } from "react-icons/md";
 import { TbAlertCircle } from "react-icons/tb";
 
-const ShowModel = ({ showModel, setShowModel, handleDeleteUser=null, handleDeletePost = null, isPost = false }) => {
+const ShowModel = ({ showModel, setShowModel, handleDeleteUser=null, handleDeletePost = null, isPost = false, isUser = false }) => {
   return (
     <div>
       { showModel && (
@@ -27,7 +27,7 @@ const ShowModel = ({ showModel, setShowModel, handleDeleteUser=null, handleDelet
                   <div className="text-center">
                     <TbAlertCircle className='mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200'/>
                     <h3 className='mb-5 text-lg font-normal text-gray-500 dark:text-gray-400'>
-                      {`Are you sure you want to delete your ${isPost ? 'Post' : 'Account'}?`}
+                      {isUser ? 'Are you sure you want to delete this user?' : `Are you sure you want to delete your ${isPost ? 'Post' : 'Account'}?`}
                     </h3>
                     <div className='flex justify-center gap-4'>
                       <button 
