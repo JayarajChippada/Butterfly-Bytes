@@ -9,6 +9,7 @@ export default {
     extend: {
       colors: {
         'custom-dark': 'rgb(16, 23, 42)',
+        'custom-purple': 'rgb(118, 74, 188)',
       },
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to right, #00aaff, #ff0099, #ffcc00)',

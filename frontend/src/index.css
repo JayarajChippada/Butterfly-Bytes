@@ -61,34 +61,212 @@ html, body {
     animation: gradientAnimation 5s linear infinite;
   }
 
-  .post-content p {
-    margin-bottom: 0.5rem;
-  }
+.post-content pre {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-left: 3px solid #f36d33;
+  color: #333;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
+}
 
-  .post-content h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    font-family: sans-serif;
-    margin: 1.5rem 0;
-  }
+.post-content pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
 
-  .post-content h2 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    font-family: sans-serif;
-    margin: 1.5rem 0;
-  }
+.post-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 10px 0;
+  color: #333;
+}
 
-  .post-content a {
-    color: rgb(73, 149, 199);
-    text-decoration: none;
-  }
+.post-content a {
+  color: #007bff;
+  text-decoration: none;
+}
 
-  .post-content a:hover {
-    text-decoration: underline;
-  }
+.post-content a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
 
-  .dark .post-content a {
-    color: red;
-    text-decoration: none;
-  }
+.post-content h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3em;
+}
+
+.post-content h2 {
+  font-size: 1.75em;
+  margin: 0.83em 0;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.3em;
+}
+
+.post-content ul, 
+.post-content ol {
+  margin: 10px 0;
+  padding: 0 0 0 20px;
+}
+
+.post-content ul li, 
+.post-content ol li {
+  margin: 5px 0;
+}
+
+.post-content strong {
+  font-weight: bold;
+}
+
+.post-content em {
+  font-style: italic;
+}
+
+.post-content code {
+  font-family: monospace;
+  background-color: #f4f4f4;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.dark .post-content pre {
+  background-color: #2d2d2d;
+  border: 1px solid #444;
+  border-left: 3px solid #f36d33;
+  color: #f8f8f2;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
+}
+
+.dark .post-content pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.dark .post-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 10px 0;
+  color: #ccc;
+}
+
+.dark .post-content a {
+  color: #81caff;
+  text-decoration: none;
+}
+
+.dark .post-content a:hover {
+  color: #59a7df;
+  text-decoration: underline;
+}
+
+.dark .post-content h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+  color: #ccc;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.3em;
+}
+
+.dark .post-content h2 {
+  font-size: 1.75em;
+  margin: 0.83em 0;
+  color: #ccc;
+  border-bottom: 1px solid #444;
+  padding-bottom: 0.3em;
+}
+
+.dark .post-content ul, 
+.dark .post-content ol {
+  margin: 10px 0;
+  padding: 0 0 0 20px;
+}
+
+.dark .post-content ul li, 
+.dark .post-content ol li {
+  margin: 5px 0;
+}
+
+.dark .post-content strong {
+  font-weight: bold;
+}
+
+.dark .post-content em {
+  font-style: italic;
+}
+
+.dark .post-content code {
+  font-family: monospace;
+  background-color: #2d2d2d;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+/* Common TOC styles */
+.toc {
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  border-right: 1px solid #ddd;
+  background-color: #f9f9f9; /* Light mode background */
+}
+.toc h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+.toc ul {
+  list-style: none;
+  padding: 0;
+}
+.toc li {
+  margin: 0.5em 0;
+}
+.toc a {
+  text-decoration: none;
+  color: #007bff; /* Link color */
+}
+.toc a:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode styles */
+.dark .toc {
+  background-color: rgb(16, 23, 42); /* Dark mode background */
+  border-right: 1px solid #333; /* Dark mode border */
+  color: #e0e0e0; /* Dark mode text color */
+}
+.dark .toc h2 {
+  color: #f9f9f9; /* Dark mode heading color */
+}
+.dark .toc a {
+  color: #4a90e2; /* Dark mode link color */
+}
+.dark .toc a:hover {
+  text-decoration: underline;
+  color: #7ec8e3; /* Lighter link color on hover */
+}
