@@ -15,7 +15,7 @@ const ShowModel = ({ showModel, setShowModel, handleDeleteUser=null, handleDelet
                   <h3 className='text-xl font-medium text-gray-900 dark:text-white'></h3>
                   <button 
                      onClick={(e) => setShowModel(false)}
-                    className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm 
+                    className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm border
                               text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 
                               dark:hover:text-white"
                   >
