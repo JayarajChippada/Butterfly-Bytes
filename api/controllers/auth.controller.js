@@ -60,7 +60,7 @@ export const signin = async (req, res, next) => {
         const token = jwt.sign(
             { userId: user._id, isAdmin: user.isAdmin },
             process.env.JWT_TOKEN,
-            { expiresIn: '1h' }
+            // { expiresIn: '1h' }
         );
 
         const { password:pass, ...userData } = user._doc;
@@ -97,7 +97,7 @@ export const googleAuth = async(req, res, next) => {
             });
             await newUser.save();
             
-            const token = jwt.sign({id: newUser._id, isAdmin: user.isAdmin}, process.env.JWT_TOKEN);
+            const token = jwt.sign({id: newUser._id, isAdmin: newUser.isAdmin}, process.env.JWT_TOKEN);
             const { password:pass, ...userData } = newUser._doc;
             res.status(200)
                 .cookie('access_token', token, { httpOnly:true })
