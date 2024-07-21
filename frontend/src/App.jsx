@@ -1,4 +1,4 @@
-import { Home, Dashboard, SignIn, SignUp, About, Projects, CreatePost, UpdatePost } from './pages/index';
+import { Home, Dashboard, SignIn, SignUp, About, Projects, CreatePost, UpdatePost, PostPage } from './pages/index';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Footer, Header, PrivateRoute, OnlyAdminPrivateRoute } from './components'
 
@@ -19,6 +19,7 @@ function App() {
         </Route>
         <Route path='/about' element={<About />} />
         <Route path='/projects' element={<Projects />} />
+        <Route path='/post/:postSlug' element={<PostPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>
