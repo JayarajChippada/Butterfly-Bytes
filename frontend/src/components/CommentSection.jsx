@@ -26,6 +26,7 @@ const CommentSection = ({ postId }) => {
             if(res.ok) {
                 setComment('');
                 setCommentError(null)
+                setComments([data, ...comments])
             }
             else {
                 setCommentError(data.message);
