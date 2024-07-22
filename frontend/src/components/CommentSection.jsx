@@ -1,0 +1,96 @@
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+const CommentSection = ({ postId }) => {
+    const { currentUser } = useSelector((state)=>state.user);
+    const [comment, setComment] = useState('');
+    const [commentError, setCommentError] = useState(null);
+
+    const handleSubmit = async(e)=>{
+        e.preventDefault();
+        if(comment.length > 200) { 
+            return setCommentError("More than 200 characters");
+        }
+        try{
+            const res = await fetch('/api/comment/create', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": "Application/json"
+                },
+                body: JSON.stringify({content: comment, postId: postId, userId: currentUser._id})
+            })
+            const data = await res.json();
+            if(res.ok) {
+                setComment('');
+                setCommentError(null)
+            }
+            else {
+                setCommentError(data.message);
+            }
+        } catch(error) {
+            setCommentError(error.message);
+        }
+    }
+  return (
+    <div className='max-w-2xl mx-auto w-full p-3'>
+      {
+        currentUser ? (
+            <div className='flex items-center gap-1 my-5 text-gray-500 text-sm'>
+                <p>Signedin as:</p>
+                <img
+                    className='rounded-full w-5 h-5 object-cover' 
+                    src={currentUser.profilePicture} alt="user" />
+                <Link className='text-xs text-cyan-600 hover:underline' to={`/dashboard?tab=profile`}>
+                    @{currentUser.userName}
+                </Link>
+            </div>
+        ) : (
+            <div className='text-sm text-teal-500 my-5 glex gap-1'>
+                You must be signed in to comment
+                <Link to='/sign-in' className='text-blue-500 hover:underline'>
+                    Sign In
+                </Link>
+            </div>
+        )
+      }
+      {
+        currentUser && (
+           <form 
+            onSubmit={handleSubmit}
+            className='border border-teal-500 rounded-md p-3'>
+             <textarea 
+                className='p-2.5 text-sm w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 
+                            focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
+                            dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'   
+                onChange={(e)=>setComment(e.target.value)}
+                value={comment}
+                name="" 
+                rows={3}
+                maxLength='200'
+                placeholder='Add a comment...'
+                id="comment">
+            </textarea>
+            <div className="flex items-center justify-between mt-5">
+                <p className='text-gray-500 text-xs'>{200 - comment.length} characters remaining</p>
+                <button className=" bg-teal-500 inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium rounded-lg group hover:text-white dark:text-white ">
+                  <span className=" font-normal px-4 py-1 transition-all ease-in duration-75 bg-white text-black hover:text-white rounded-md group-hover:bg-opacity-0 dark:bg-custom-dark dark:text-white">
+                    Submit
+                  </span>
+                </button>
+            </div>
+            {
+              commentError && (
+                <div className="mt-4 text-sm p-4 text-red-800 rounded-lg bg-red-50 ">
+                  <span className="font-semibold">{commentError}</span>
+                </div>
+              )
+            }
+           </form>
+        )
+      }
+    </div>
+  )
+}
+
+export default CommentSection

@@ -17,6 +17,7 @@ const Header = () => {
   const { theme }  = useSelector((state)=>state.theme);
   const dispatch = useDispatch();
 
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -57,6 +58,7 @@ const Header = () => {
         }
         else {
           dispatch(signOutSuccess());
+          setIsClicked(false);
         }
       } catch(error) {
         console.log(error.message);
