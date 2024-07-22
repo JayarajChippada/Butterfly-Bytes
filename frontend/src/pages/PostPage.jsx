@@ -8,6 +8,8 @@ const PostPage = () => {
   const [error, setError] = useState(null);
   const [post, setPost] = useState(null);
   const [headings, setHeadings] = useState([]);
+  const [user, setUser] = useState({})
+  
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -32,24 +34,37 @@ const PostPage = () => {
   }, [postSlug]);
 
   useEffect(() => {
-  if (post) {
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(post.content, 'text/html');
-    const headingsArray = [];
+    const getUser = async()=>{
+      try{
+        const res = await fetch(`/api/user/${post.userId}`);
+        const data = await res.json();
+        if(res.ok) {
+          setUser(data);
+        }
+      } catch(error) {
+        console.log(error.message)
+      }
+    }
+    getUser();
+    if (post) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(post.content, 'text/html');
+      const headingsArray = [];
 
-    let index = 1; // Start indexing from 1
+      let index = 1; // Start indexing from 1
 
-    doc.querySelectorAll('h1, h2').forEach((tag) => {
-      const id = tag.innerText.replace(/\s+/g, '-').toLowerCase();
-      tag.id = id; // Set an id for the heading
-      const headingText = `${index}. ${tag.innerText}`;
-      headingsArray.push({ id, text: headingText });
-      index++;
-    });
+      doc.querySelectorAll('h1, h2').forEach((tag) => {
+        const id = tag.innerText.replace(/\s+/g, '-').toLowerCase();
+        tag.id = id; // Set an id for the heading
+        const headingText = `${index}. ${tag.innerText}`;
+        headingsArray.push({ id, text: headingText });
+        index++;
+      });
 
-    setHeadings(headingsArray);
-  }
+      setHeadings(headingsArray);
+    }
 }, [post]);
+
 
 
   if (loading)
@@ -90,14 +105,20 @@ const PostPage = () => {
           <h1 className="z-1 text-3xl sm:text-4xl lg:text-5xl font-bold  font-serif max-w-2xl">
             {post && post.title}
           </h1>
-          <Link to={`/search?category=${post && post.category}` } className='max-w-14'>
-            <button
-              type="button"
-              className="z-1 uppercase text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-            >
-              {post && post.category}
-            </button>
-          </Link>
+          <div className="flex flex-col items-start sm:flex-row sm:items-center  gap-3 sm:gap-4">
+            <div className="flex items-center gap-4">
+              <img src={user.profilePicture} alt={user.userName} className='w-10 h-10 object-cover bg-gray-100 rounded-full' />
+              <p className="uppercase font-bold text-md hover:underline cursor-pointer">{user.userName}</p>
+            </div>
+            <Link to={`/search?category=${post && post.category}` } className='max-w-14 sm:ml-14'>
+              <button
+                type="button"
+                className="z-1 uppercase text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-xs px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              >
+                {post && post.category}
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
       <div className="flex flex-col lg:flex-row">
