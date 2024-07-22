@@ -2,7 +2,15 @@ import React from 'react';
 import { MdClose } from "react-icons/md";
 import { TbAlertCircle } from "react-icons/tb";
 
-const ShowModel = ({ showModel, setShowModel, handleDeleteUser=null, handleDeletePost = null, isPost = false, isUser = false }) => {
+const ShowModel = ({ 
+        showModel, 
+        setShowModel, 
+        handleDeleteUser=null, 
+        handleDeletePost = null, 
+        handleDeleteComment = null,
+        isComment = false,
+        isPost = false, 
+        isUser = false }) => {
   return (
     <div>
       { showModel && (
@@ -27,11 +35,23 @@ const ShowModel = ({ showModel, setShowModel, handleDeleteUser=null, handleDelet
                   <div className="text-center">
                     <TbAlertCircle className='mx-auto mb-4 h-14 w-14 text-gray-400 dark:text-gray-200'/>
                     <h3 className='mb-5 text-lg font-normal text-gray-500 dark:text-gray-400'>
-                      {isUser ? 'Are you sure you want to delete this user?' : `Are you sure you want to delete your ${isPost ? 'Post' : 'Account'}?`}
+                      {
+                        isUser ? 
+                        'Are you sure you want to delete this user?' 
+                        : isPost ? 
+                        'Are you sure you want to delete your Post?' 
+                        : isComment ? 
+                        'Are you sure you want to delete your Comment?' 
+                        : 'Are you sure you want to delete your Account?'}
                     </h3>
                     <div className='flex justify-center gap-4'>
                       <button 
-                        onClick={isPost ? handleDeletePost : handleDeleteUser}
+                        onClick={
+                          isPost 
+                          ? handleDeletePost 
+                          : isComment ? 
+                          handleDeleteComment
+                          : handleDeleteUser}
                         className="flex items-center justify-center p-0.5 text-center font-medium 
                                          relative focus:z-10 focus:outline-none text-white bg-red-700 
                                          border border-transparent enabled:hover:bg-red-800 focus:ring-red-300 
