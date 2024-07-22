@@ -78,6 +78,12 @@ const CommentSection = ({ postId }) => {
         }
     }
 
+    const handleEdit = (commentId, editedContent) => {
+      setComments(
+        comments.map((c)=>c._id === commentId ?  {...c, content: editedContent}  : c)
+      );
+    }
+
   return (
     <div className='max-w-2xl mx-auto w-full p-3'>
       {
@@ -107,8 +113,8 @@ const CommentSection = ({ postId }) => {
             className='border border-teal-500 rounded-md p-3'>
              <textarea 
                 className='p-2.5 text-sm w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 
-                            focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 
-                            dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'   
+                            focus:ring-teal-500 focus:border-teal-500 dark:bg-gray-700 dark:border-gray-600 
+                            dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500'   
                 onChange={(e)=>setComment(e.target.value)}
                 value={comment}
                 name="" 
@@ -147,8 +153,8 @@ const CommentSection = ({ postId }) => {
               </div>
             </div>
             {
-              comments.map(comment => (
-                <Comment key={comment._id} comment={comment} onLike={handleLike}/>
+              comments.map((comment) => (
+                <Comment key={comment._id} comment={comment} onLike={handleLike} onEdit={handleEdit}/>
               ))
             }
           </>
