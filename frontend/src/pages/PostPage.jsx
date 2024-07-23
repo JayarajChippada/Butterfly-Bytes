@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { CommentSection, Toc } from '../components/index.js'; // Import the TOC component
+import PostCard from '../components/PostCard.jsx';
 
 const PostPage = () => {
   const { postSlug } = useParams();
@@ -8,7 +9,8 @@ const PostPage = () => {
   const [error, setError] = useState(null);
   const [post, setPost] = useState(null);
   const [headings, setHeadings] = useState([]);
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
+  const [recentPosts, setRecentPosts] = useState(null);
   
 
   useEffect(() => {
@@ -64,6 +66,21 @@ const PostPage = () => {
       setHeadings(headingsArray);
     }
 }, [post]);
+
+  useEffect(()=>{
+    try{
+      const fetchRecentPosts = async() => {
+        const res = await fetch(`/api/post/getposts?limit=3`);
+        const data = await res.json();
+        if(res.ok) {
+          setRecentPosts(data.posts)
+        }
+      }
+      fetchRecentPosts();
+    } catch(error) {
+      console.log(error.message)
+    }
+  },[])
 
 
 
@@ -144,6 +161,16 @@ const PostPage = () => {
 
           {/* Comment Section */}
           <CommentSection postId={post && post._id} />
+          <div className="flex flex-col items-center justify-center mb-5">
+            <h1 className="text-xl mt-5">Recent articles</h1>
+            <div className="">
+              {
+                recentPosts && recentPosts.map((post) => (
+                  <PostCard key={post._id} post={post} />
+                ))
+              }
+            </div>
+          </div>
         </div>
       </div>
     </main>

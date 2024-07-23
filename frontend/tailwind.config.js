@@ -20,3 +20,5 @@ export default {
     require('tailwind-scrollbar'),
   ],
 }
+
+// rgb(27, 27, 27) can be used for bg-dark mode
