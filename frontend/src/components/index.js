@@ -12,3 +12,4 @@ export { default as Toc } from './Toc';
 export { default as CommentSection } from './CommentSection';
 export { default as ScrollToTop } from './ScrollToTop';
 export { default as Comment } from './Comment';
+export { default as HomePostCard } from './HomePostCard';

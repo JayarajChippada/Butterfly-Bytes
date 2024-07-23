@@ -270,3 +270,44 @@ html, body {
   text-decoration: underline;
   color: #7ec8e3; /* Lighter link color on hover */
 }
+
+.post-card-content h1 {
+  font-size: 0em;
+  color: #333;
+}
+
+.post-card-content h2 {
+  font-size: 0em;
+  color: #333;
+}
+
+.dark .post-content h1 {
+  font-size: 0em;
+  color: #ccc;
+}
+
+.dark .post-content h2 {
+  font-size: 0em;
+  color: #ccc;
+}
+
+.post-card-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.dark .post-card-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #ccc;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.dark .post-card-content img{
+  height: 0;
+  width: 0;
+}
