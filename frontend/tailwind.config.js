@@ -14,10 +14,14 @@ export default {
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to right, #00aaff, #ff0099, #ffcc00)',
       },
+      screens: {
+        'custom': '500px', // Custom media query
+      },
     },
   },
   plugins: [
     require('tailwind-scrollbar'),
+    require('@tailwindcss/line-clamp'),
   ],
 }
 
