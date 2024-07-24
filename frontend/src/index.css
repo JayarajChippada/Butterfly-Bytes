@@ -271,29 +271,38 @@ html, body {
   color: #7ec8e3; /* Lighter link color on hover */
 }
 
-.post-card-content {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  -webkit-line-clamp: 3; /* Number of lines to show */
-  line-clamp: 3; /* Fallback for non-webkit browsers */
+.blog-card h1, h2 {
+  display: none;
 }
 
-/* Hide h1 and h2 within the content */
-.post-card-content h1,
-.post-card-content h2 {
+.blog-card h1, .blog-card h2,
+.blog-card ul, .blog-card ol,
+.blog-card strong, .blog-card em,
+.blog-card code, h3 {
+  display: none;
+}
+
+.blog-card {
+  max-width: 400px;
+  overflow: hidden;
+  max-height: 180px;
+}
+
+.blog-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.2em;
+}
+
+.blog-card p {
+  margin: 8px 0;
+  color: #bbb; /* Light gray color for the text */
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.blog-card img {
   display: none;
 }
 
 
-/* Light mode styles */
-.light .post-card-content {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-/* Dark mode styles */
-.dark .post-card-content {
-  background-color: rgb(16, 23, 42);
-  color: #ffffff;
-}
