@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { CommentSection, Toc } from '../components/index.js'; // Import the TOC component
-import PostCard from '../components/PostCard.jsx';
+import { CommentSection, HomePostCard, Toc } from '../components/index.js'; // Import the TOC component
+
 
 const PostPage = () => {
   const { postSlug } = useParams();
@@ -163,10 +163,12 @@ const PostPage = () => {
           <CommentSection postId={post && post._id} />
           <div className="flex flex-col items-center justify-center mb-5">
             <h1 className="text-xl mt-5">Recent articles</h1>
-            <div className="">
+            <div className="w-[94%] max-w-lg mx-auto">
               {
                 recentPosts && recentPosts.map((post) => (
-                  <PostCard key={post._id} post={post} />
+                  <Link key={post._id} to={`/post/${post.slug}`}>
+                    <HomePostCard  post={post} />
+                  </Link>
                 ))
               }
             </div>

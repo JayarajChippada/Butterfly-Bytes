@@ -29,26 +29,20 @@ const HomePostCard = ({ post }) => {
             />
           <p className='uppercase text-xs font-bold'>{user && user.userName}</p>
       </div>
-      <div className="flex items-start justify-between">
+      <div className="flex justify-between items-center">
             <div className="flex flex-col gap-3 mr-5">
-                <h2 className='text-xl font-bold'>{post.title}</h2>
-                <img 
-                src={post.image}
-                alt={post.title}
-                className='max-w-[92%] mx-auto w-full h-32 object-cover custom-sm:hidden'
-            />
-                <div
-                  className="line-clamp-3 max-w-[260px] custom-xs:max-w-[320px] custom-md:max-w-[400px] md:max-w-md  overflow-hidden blog-card"
+                <h2 className='text-xl font-bold line-clamp-2'>{post.title}</h2>
+                 <div
+                  className="line-clamp-3 overflow-hidden blog-card"
                   dangerouslySetInnerHTML={{ __html: post && post.content }}
                 ></div>
             </div>
             <img 
                 src={post.image}
-                alt={post.title}
-                className='hidden custom-sm:block w-24 h-24 sm:w-52 sm:h-52 object-contain bg-transparent'
+                alt=""
+                className='w-24 h-16  sm:w-52 sm:h-36 object-contain bg-transparent'
             />
         </div>
-
       </div>
     </div>
   )

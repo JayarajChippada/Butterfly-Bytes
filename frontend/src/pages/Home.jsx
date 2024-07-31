@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../assets/home-page-banner.jpg';
-import logo from '../assets/butterfly-logo.png';
 import userbanner from '../assets/user-banner.png';
 import { HomePostCard } from '../components';
 
@@ -80,7 +79,9 @@ const Home = () => {
                     <div className="mt-15">
                       {
                         posts && posts.map((post)=>(
-                          <HomePostCard key={post._id} post={post} />
+                          <Link key={post._id} to={`/post/${post.slug}`}>
+                            <HomePostCard  post={post} />
+                          </Link>   
                         ))
                       }
                     </div>

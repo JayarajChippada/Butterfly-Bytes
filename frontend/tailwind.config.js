@@ -14,12 +14,6 @@ export default {
       backgroundImage: {
         'custom-gradient': 'linear-gradient(to right, #00aaff, #ff0099, #ffcc00)',
       },
-      screens: {
-        'custom': '500px',
-        'custom-xs': '350px',
-        'custom-sm': '450px',
-        'custom-md': '550px',
-      },
     },
   },
   plugins: [

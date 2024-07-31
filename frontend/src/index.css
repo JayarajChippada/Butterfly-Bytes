@@ -278,27 +278,31 @@ html, body {
 .blog-card h1, .blog-card h2,
 .blog-card ul, .blog-card ol,
 .blog-card strong, .blog-card em,
-.blog-card code, h3 {
+.blog-card code, h3, pre {
   display: none;
 }
 
-.blog-card {
-  max-width: 400px;
-  overflow: hidden;
-  max-height: 180px;
-}
 
 .blog-card h3 {
   margin: 0 0 8px;
   font-size: 1.2em;
 }
 
+.blog-card p:nth-of-type(n+2) {
+    display: none;
+}
+
+.blog-card p:first-of-type {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
 .blog-card p {
-  margin: 8px 0;
-  color: #bbb; /* Light gray color for the text */
-  white-space: wrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 1em 0;
 }
 
 .blog-card img {
