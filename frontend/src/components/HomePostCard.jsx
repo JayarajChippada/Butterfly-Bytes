@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const HomePostCard = ({ post }) => {
     const [user, setUser] = useState(null);
@@ -19,7 +20,7 @@ const HomePostCard = ({ post }) => {
         fetchUser();
     },[post]) 
   return (
-    <div className='w-full py-5 border-b dark:border-gray-400'>
+    <div className='w-full py-5 border-b dark:border-gray-400 hover:shadow-lg px-4'>
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-start gap-2">
             <img 
@@ -43,6 +44,17 @@ const HomePostCard = ({ post }) => {
                 className='w-24 h-16  sm:w-52 sm:h-36 object-contain bg-transparent'
             />
         </div>
+      </div>
+      <div className="flex text-md font-semi-bold">
+        <span className="mr-3">
+          {post && new Date(post.createdAt).toLocaleDateString()}.
+        </span>
+        <span>
+          {post && (post.content.length / 1000).toFixed(0)}mins read
+        </span>
+        <span className='uppercase ml-5'>
+          {post && post.category}
+        </span>
       </div>
     </div>
   )

@@ -114,3 +114,31 @@ export const getUser = async(req, res, next) => {
         next(error);
     }
 }
+
+export const getEditors = async (req, res, next) => {
+    try {
+        const startIndex = parseInt(req.query.startIndex) || 0;
+        const limit = parseInt(req.query.limit) || 9;
+        const sortDirection = req.query.order === 'asc' ? 1 : -1; // newest and oldest
+
+        const usersWithPasswords = await User.find({ isAdmin: true })
+            .sort({ updatedAt: sortDirection })
+            .skip(startIndex)
+            .limit(limit);
+
+        const users = usersWithPasswords.map((user) => {
+            const { profilePicture: pict, userName: username, ...userData } = user._doc;
+            return {
+                profilePicture: pict,
+                userName: username
+            };
+        });
+
+        res.status(200).json({
+            success: true,
+            users
+        });
+    } catch (error) {
+        next(error);
+    }
+};
