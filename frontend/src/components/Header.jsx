@@ -146,7 +146,7 @@ const Header = () => {
           </div>
 
           {/* Theme Button */}
-          <div className='hidden sm:block ml-5 md:ml-0'>
+          <div className='hidden sm:block ml-5 mr-5 md:ml-0'>
             <button 
               type="button" 
               onClick={toggleThemeButton}

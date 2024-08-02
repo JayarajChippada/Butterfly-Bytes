@@ -20,7 +20,7 @@ const HomePostCard = ({ post }) => {
         fetchUser();
     },[post]) 
   return (
-    <div className='w-full py-5 border-b dark:border-gray-400 hover:shadow-lg px-4'>
+    <div className='w-full py-5 border-b hover:shadow-lg rounded-lg px-4 my-5 dark:hover:bg-gray-800 dark:border-gray-700'>
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-start gap-2">
             <img 

@@ -194,7 +194,7 @@ const Home = () => {
                           </Link>   
                         ))) 
                         : (
-                          <div className="w-full flex items-center justify-center">There is no posts yet!</div>
+                          <div className="w-full flex items-center justify-center">There are no posts yet!</div>
                         )
                       }
                       {
